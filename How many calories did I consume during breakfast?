@@ -1,0 +1,17 @@
+import json
+
+calories_consumed = {"milk": 50, "banana": 90, "granola": 120, "yogurt": 120, "blueberries": 40, "buttered toast": 150, "egg": 80, "almonds": 170}
+
+with open("Marta.json", "w") as M:
+    json.dump(calories_consumed, M)
+
+food = input("Write what you ate for breakfast separated by commas: ")
+amount = input("Amount of each food, separated by commas: ")
+food_list = food.split(",")
+amount_list = amount.split(",")
+
+calories = 0
+
+for i in range(0, len(food_list)):
+    calories = calories + calories_consumed[food_list[i]] * (float(amount_list[i]) / 100)
+print("You consumed ", calories, " calories!!")
