@@ -1,0 +1,21 @@
+import json
+
+calories_burned = {"weight":["Up to 56kg", "From 56kg up to 70kg", "More than 70kg"], "walking":[215, 267, 319], "baseball":[289, 359, 428], "swimming":[397, 492, 587],
+                   "tennis":[397, 492, 587], "running":[624, 773, 923], "bicycling":[454, 562, 671], "football":[399, 494, 588], "basketball":[340, 422, 503]}
+
+for place in range(1, len(calories_burned["weight"]) + 1): # same as range from 1 to 4, 4 not included
+    print(place, ") ", calories_burned["weight"][place - 1])
+   
+weight_number = int(input("PLease choose your weight number from the list above: "))
+index = weight_number - 1
+
+exercise = input("Which exercise have you done? ")
+
+hour = float(input("How many hours have you trained? "))
+
+burned = calories_burned[exercise][index] * hour
+
+with open("data.json", "w") as json_file:
+    json.dump(calories_burned, json_file)
+   
+print("You burned ", burned, " calories!")
